@@ -91,8 +91,7 @@ _main:
     mov x16, #97 // socket syscall
     svc #0x80
 
-    // Check for error
-    cmp x0, #0
+    cmp x0, #0 // Check error
     b.lt print_error
     mov x19, x0
 
@@ -114,8 +113,7 @@ _main:
     mov x16, #104
     svc #0x80
     
-    // Add this error check for bind
-    cmp x0, #0
+    cmp x0, #0 // Check error
     b.lt print_error 
 
     // Listen
@@ -133,20 +131,14 @@ _main:
     mov x1, listen_msg_len
     bl print
 
-    // Set default response (mom)
-    adrp x21, mom_response@PAGE
-    add x21, x21, mom_response@PAGEOFF
-    mov x22, mom_response_len
-
-request_loop:
-    // Accept connection
+request_loop: // Acceps the  connection and sends  the response
     mov x0, x19
     mov x1, #0
     mov x2, #0
     mov x16, #30 // accept syscall
     svc #0x80
 
-    cmp x0, #0     // Check for accept error
+    cmp x0, #0 // Check accept error
     b.lt request_loop
     mov x20, x0 // Save client socket for future
 
@@ -165,13 +157,22 @@ request_loop:
     mov x0, sp 
     adrp x1, urdad_url@PAGE
     add x1, x1, urdad_url@PAGEOFF
-    bl _strstr // yes again libc functione
-    
-    // If found, update response pointer to dad
-    cbz x0, send_response    // If not found, skip to send response
+    bl _strstr // yes again libc function but it's okay
+
+    cmp x0, #0
+    b.ne load_dad_response
+    b load_mom_response
+
+load_mom_response:
+    adrp x21, mom_response@PAGE
+    add x21, x21, mom_response@PAGEOFF
+    mov x22, mom_response_len
+    b send_response
+load_dad_response:
     adrp x21, dad_response@PAGE
     add x21, x21, dad_response@PAGEOFF
     mov x22, dad_response_len
+    b send_response
 
 send_response:
     mov x0, x20 // x20 holds the socket descriptor
@@ -188,7 +189,6 @@ send_response:
     add x0, x0, close_msg@PAGEOFF
     mov x1, close_msg_len
     bl print
-
     b request_loop
 
 print_error:
