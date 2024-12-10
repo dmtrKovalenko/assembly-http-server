@@ -67,14 +67,12 @@ _main:
     bl _printf // libc call. I am not getting paid to manually convert ints to strings
     add sp, sp, #16 // increase stack back to normal but we don't use anyway
 
-    adrp x1, _sockaddr@PAGE
-    add x1, x1, _sockaddr@PAGEOFF 
     mov w0, HTTP_PORT
     bl _htons // libc call again. Convert the port number to the host-to-network byte order
+    adrp x1, _sockaddr@PAGE
+    add x1, x1, _sockaddr@PAGEOFF 
     strh w0, [x1, #2] // and store it in the _sockaddr struct
 
-    // In the code after socket creation and before bind
-    // Create socket
     mov x0, AF_INET
     mov x1, SOCK_STREAM
     mov x2, #0
@@ -103,10 +101,9 @@ _main:
     cmp x0, #0 // Check error
     b.lt print_error 
 
-    // Listen
     mov x0, x19
     mov x1, #5
-    mov x16, #106
+    mov x16, #106 // listen syscall
     svc #0x80
 
     cmp x0, #0 // Check for listen error
@@ -129,7 +126,6 @@ request_loop: // Accepts the connection and sends the response
     mov x20, x0 // Save client socket for future
     // Read request
     sub sp, sp, #1024 // Allocate buffer on stack
-    mov x0, x20
     mov x1, sp
     mov x2, #1024
     mov x16, #3 // read syscall
@@ -145,8 +141,8 @@ request_loop: // Accepts the connection and sends the response
     bl _strstr // yes again libc function but it's okay
     cmp x0, #0
     b.ne load_mom_response
-    mov x0, sp // Check for /urdad URL
 
+    mov x0, sp // Check for /urdad URL
     adrp x1, dad_url@PAGE
     add x1, x1, dad_url@PAGEOFF
     bl _strstr
