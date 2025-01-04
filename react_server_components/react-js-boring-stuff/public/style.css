@@ -1,0 +1,457 @@
+/* -------------------------------- CSSRESET --------------------------------*/
+/* CSS Reset adapted from https://dev.to/hankchizljaw/a-modern-css-reset-6p3 */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --berkeley-font: TX02 Nerd Font, Berkeley Mono, 'Courier New', monospace;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-block-start: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* -------------------------------- /CSSRESET --------------------------------*/
+
+:root {
+  /* Colors */
+  --main-border-color: #ddd;
+  --primary-border: #037dba;
+  --gray-20: #404346;
+  --gray-60: #8a8d91;
+  --gray-70: #bcc0c4;
+  --gray-80: #c9ccd1;
+  --gray-90: #e4e6eb;
+  --gray-95: #f0f2f5;
+  --gray-100: #f5f7fa;
+  --primary-blue: #037dba;
+  --secondary-blue: #0396df;
+  --tertiary-blue: #c6efff;
+  --flash-blue: #4cf7ff;
+  --outline-blue: rgba(4, 164, 244, 0.6);
+  --navy-blue: #035e8c;
+  --red-25: #bd0d2a;
+  --secondary-text: #65676b;
+  --white: #fff;
+  --yellow: #fffae1;
+
+  --outline-box-shadow: 0 0 0 2px var(--outline-blue);
+  --outline-box-shadow-contrast: 0 0 0 2px var(--navy-blue);
+
+  /* Fonts */
+  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu, Helvetica, sans-serif;
+  --monospace: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--sans-serif);
+  background: var(--gray-100);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 3.052rem;
+}
+h2 {
+  font-size: 2.441rem;
+}
+h3 {
+  font-size: 1.953rem;
+}
+h4 {
+  font-size: 1.563rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+small,
+.text_small {
+  font-size: 0.8rem;
+}
+pre,
+code {
+  font-family: var(--monospace);
+  border-radius: 6px;
+}
+pre {
+  background: var(--gray-95);
+  padding: 12px;
+  line-height: 1.5;
+}
+code {
+  background: var(--yellow);
+  padding: 0 3px;
+  font-size: 0.94rem;
+  word-break: break-word;
+}
+pre code {
+  background: none;
+}
+a {
+  color: var(--primary-blue);
+}
+
+body {
+  background: #282c34;
+}
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+  min-height: 100vh;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.pepe-container {
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+}
+
+.pepe-container:has(+ .error-card) {
+  display: none;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: end;
+  margin-right: 6rem;
+}
+
+.react-logo {
+  height: 30vmin;
+  pointer-events: none;
+  animation: rotate 20s linear infinite;
+}
+
+.pepe-pointing {
+  height: 15vmin;
+}
+
+.assembly-header {
+  white-space: pre-wrap;
+  font-family: Berkeley Mono, Courier New, monospace;
+  color: #61dafb;
+  text-transform: uppercase;
+  border: 2px solid #61dafb;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background: #1a1e23;
+  margin-top: 0.5rem;
+  white-space: pre-line;
+}
+
+pre {
+  color: #fff;
+  padding: 2rem;
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: medium;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-family: var(--berkeley-font);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* error-card.css */
+.error-card {
+  width: 100%;
+  background: #ff8080;
+  border: 3px dashed #ff0000;
+  outline: 2px solid #990000;
+  padding: 15px;
+  margin: 40px 0 10px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 8px 8px 0 #990000;
+  position: relative;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 0, 0, 0.1) 10px,
+    rgba(255, 0, 0, 0.1) 20px
+  );
+}
+
+.error-content {
+  display: flex;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  border: 1px solid #ff0000;
+}
+
+.error-image-container {
+  flex-shrink: 0;
+  /* Added padding to give some space around the bigger image */
+  padding: 5px;
+}
+
+.error-image {
+  width: 190px;
+  height: 190px;
+  border: 5px solid #ff0000;
+  transform: rotate(-3deg);
+  box-shadow: 0 0 0 2px #990000, 8px 8px 0 #990000;
+  transition: transform 0.3s ease;
+}
+
+.error-image:hover {
+  transform: rotate(3deg) scale(1.05);
+}
+
+.error-content {
+  display: flex;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border: 1px solid #ff0000;
+}
+
+.error-details {
+  flex: 1;
+}
+
+.error-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px dotted #ff0000;
+  padding-bottom: 10px;
+}
+
+.error-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #990000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #ff8080;
+  animation: shake 0.5s infinite;
+}
+
+.error-code {
+  font-size: 16px;
+  color: #990000;
+  font-weight: bold;
+  background: #ff8080;
+  margin-top: 8px;
+  padding: 2px 8px;
+  border: 2px solid #ff0000;
+  transform: rotate(2deg);
+  display: inline-block;
+}
+
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  border: 3px solid #990000;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transform: rotate(5deg);
+}
+
+.close-button:hover {
+  background: #990000;
+  transform: rotate(-5deg);
+}
+
+.close-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.error-message {
+  margin-top: 10px;
+  color: #660000;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-left: 4px solid #ff0000;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  75% {
+    transform: translateX(1px);
+  }
+}
+
+.error-card::before {
+  content: 'ERROR!!!';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #ff0000;
+  color: white;
+  padding: 2px 10px;
+  transform: rotate(3deg);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.error-card::after {
+  content: '⚠️';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  font-size: 20px;
+  transform: rotate(-10deg);
+}
+
+.counter-container {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px dashed #ff0000;
+  text-align: center;
+}
+
+.counter-display {
+  font-size: 24px;
+  font-family: var(--berkeley-font);
+  color: #990000;
+  background: #ffeeee;
+  padding: 5px 15px;
+  border: 3px double #ff0000;
+  display: inline-block;
+  min-width: 100px;
+  margin: 0 10px;
+}
+
+.counter-button {
+  font-size: 20px;
+  font-weight: bold;
+  background: #ff0000;
+  font-family: var(--berkeley-font);
+  color: white;
+  border: 3px solid #990000;
+  padding: 5px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  transform: skew(-5deg);
+  box-shadow: 3px 3px 0 #990000;
+}
+
+.counter-button:hover {
+  background: #990000;
+  transform: skew(5deg);
+}
+
+.counter-button:active {
+  transform: skew(5deg) translate(3px, 3px);
+  box-shadow: none;
+}
