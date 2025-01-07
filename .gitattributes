@@ -1,1 +1,4 @@
-react-js-boring-stuff/* linguist-vendored
+*.js linguist-vendored=true
+*.html linguist-vendored=true
+*.css linguist-vendored=true
+
