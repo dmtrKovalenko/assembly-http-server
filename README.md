@@ -19,6 +19,21 @@ ld -o server server.o -lSystem -L /Library/Developer/CommandLineTools/SDKs/MacOS
 ./server
 ```
 
+I recorded a very detailed youtube video with the description of every part of this assembly server. Watch here -> https://www.youtube.com/watch?v=xfBVv3WI8kU&t=2s&ab_channel=NeoGoose
+
+## React server components implementation
+
+This is fun, I know. Yes I also implemeneted a backend for React Server Components in assembly, you can find the code [here](https://github.com/dmtrKovalenko/assembly-http-server/tree/main/react_server_components). To run this app you need to run the actual react app dev server by installing node js and running 
+
+```
+npm install --legacy-peer-deps
+npm start
+```
+
+**And** running the http server the same way as described above. 
+
+Oh and there is also a youtube video for this one -> https://www.youtube.com/watch?v=i-4BJXTAFD0&t=29s
+
 ## Why did I do this? 
 
 I don't know but you can follow me on twitter to not miss the next crazy thing I do: https://x.com/neogoose_btw
