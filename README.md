@@ -36,4 +36,4 @@ Oh and there is also a youtube video for this one -> https://www.youtube.com/wat
 
 ## Why did I do this? 
 
-I don't know but you can follow me on twitter to not miss the next crazy thing I do: https://x.com/neogoose_btw
+I don't know but you can follow me on twitter to not miss the next crazy thing I do: https://x.com/0xfflock
